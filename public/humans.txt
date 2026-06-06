@@ -1,0 +1,21 @@
+/* SITE */
+Sitio: https://ganar.com.ar
+Idioma: espanol (Argentina)
+Ultima actualizacion: 2026-06-06
+
+/* TEAM */
+Contacto: https://ganar.com.ar
+
+/* THANKS */
+Pexels — video ambient
+
+/* GANAR */
+ganar /ga'nar/ — verbo transitivo del espanol.
+Acepciones, etimologia, locuciones, otras lenguas, estados.
+posibilidades. eleccion.
+
+/* AGENTS */
+Referencia canonica: /ganar.md
+Skill: /skill.md
+Spec: /spec.md
+Resumen LLM: /llms.txt

@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  font-family: 'Almarai', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #e1e0cc;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+@layer components {
+  .manuscript-label {
+    font-variant: small-caps;
+    letter-spacing: 0.14em;
+    font-size: 0.65rem;
+    color: #dedbc8;
+    opacity: 0.7;
+  }
+
+  .manuscript-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(222, 219, 200, 0.22) 20%,
+      rgba(222, 219, 200, 0.22) 80%,
+      transparent
+    );
+  }
+
+  .manuscript-folio {
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    font-size: 0.6rem;
+    color: rgba(222, 219, 200, 0.35);
+  }
+
+  .drop-cap::first-letter {
+    float: left;
+    font-family: 'Instrument Serif', serif;
+    font-size: 3.4em;
+    line-height: 0.78;
+    padding-right: 0.1em;
+    margin-top: 0.04em;
+    color: #dedbc8;
+  }
+
+  .codex-card {
+    background: #101010;
+    border: 1px solid rgba(222, 219, 200, 0.08);
+    border-radius: 1rem;
+  }
+
+  .scroll-ambient-video {
+    opacity: 0.44;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      #fff 0%,
+      #fff 14%,
+      transparent 22%,
+      transparent 78%,
+      #fff 86%,
+      #fff 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      #fff 0%,
+      #fff 14%,
+      transparent 22%,
+      transparent 78%,
+      #fff 86%,
+      #fff 100%
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-ambient {
+      display: none;
+    }
+  }
+}

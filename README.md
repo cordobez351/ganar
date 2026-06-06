@@ -1,73 +1,24 @@
-# React + TypeScript + Vite
+# ganar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ganar** /ɡaˈnaɾ/ — verbo transitivo del español.
 
-Currently, two official plugins are available:
+[ganar.com.ar](https://ganar.com.ar) es un registro filosófico y manuscrito sobre el verbo *ganar*: acepciones, etimología, locuciones, otras lenguas y estados posibles. No es un producto ni un servicio; es una referencia canónica publicada en la web.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> posibilidades. elección.
 
-## React Compiler
+Cada uso del verbo elige un estado entre muchos — lograr, merecer, conseguir, triunfar, vencer, cobrar, conquistar, ceder, capitular, renunciar, fracasar, sucumbir, perder — sin jerarquía impuesta.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Referencia
 
-## Expanding the ESLint configuration
+- Sitio: [https://ganar.com.ar](https://ganar.com.ar)
+- Canon: [ganar.md](https://ganar.com.ar/ganar.md)
+- Humanos: [humans.txt](https://ganar.com.ar/humans.txt)
+- Agentes: [skill.md](https://ganar.com.ar/skill.md) · [spec.md](https://ganar.com.ar/spec.md) · [llms.txt](https://ganar.com.ar/llms.txt)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Desarrollo local
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
+npm run build
 ```

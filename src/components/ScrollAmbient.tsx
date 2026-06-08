@@ -1,30 +1,22 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef, useState, type RefObject } from 'react'
-import {
-  SCROLL_AMBIENT_VIDEO,
-  SCROLL_AMBIENT_VIDEO_FALLBACK,
-} from '../constants/media'
+import { useCallback, useRef, useState, type RefObject } from 'react'
+import { SCROLL_AMBIENT_VIDEO } from '../constants/media'
+import { useLenisElementProgress } from '../hooks/useLenisElementProgress'
 import { useScrollScrubVideo } from '../hooks/useScrollScrubVideo'
 
 type ScrollAmbientProps = {
   scopeRef: RefObject<HTMLElement | null>
 }
 
-function SideDrift({ side }: { side: 'left' | 'right' }) {
-  const { scrollYProgress } = useScroll()
-  const y = useTransform(
-    scrollYProgress,
-    [0, 1],
-    side === 'left' ? [0, -140] : [0, 100],
-  )
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.35, 0.55, 0.3])
-
+function SideDrift({ side, progress }: { side: 'left' | 'right'; progress: number }) {
+  const y = side === 'left' ? progress * -140 : progress * 100
+  const opacity =
+    progress <= 0.5 ? 0.35 + progress * 0.4 : 0.55 - (progress - 0.5) * 0.5
   const x = side === 'left' ? 'left-6 md:left-10' : 'right-6 md:right-10'
 
   return (
-    <motion.div
+    <div
       className={`pointer-events-none absolute top-0 ${x} h-full w-6 sm:w-8 lg:w-12`}
-      style={{ y, opacity }}
+      style={{ transform: `translateY(${y}px)`, opacity }}
       aria-hidden
     >
       <div
@@ -42,42 +34,40 @@ function SideDrift({ side }: { side: 'left' | 'right' }) {
       <div
         className={`absolute top-[58%] h-1 w-1 rounded-full bg-primary/20 ${side === 'left' ? 'left-2' : 'right-2'}`}
       />
-    </motion.div>
+    </div>
   )
 }
 
 export function ScrollAmbient({ scopeRef }: ScrollAmbientProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [videoSrc, setVideoSrc] = useState(SCROLL_AMBIENT_VIDEO)
+  const [progress, setProgress] = useState(0)
+  const [fade, setFade] = useState(0)
 
-  const { scrollY } = useScroll()
-  const fadeOpacity = useTransform(scrollY, (y) => {
-    const hero = window.innerHeight
-    if (y < hero * 0.25) return 0
-    if (y < hero * 0.7) return (y - hero * 0.25) / (hero * 0.45)
-    return 1
-  })
+  const onProgress = useCallback((nextProgress: number, nextFade: number) => {
+    setProgress(nextProgress)
+    setFade(nextFade)
+  }, [])
 
-  useScrollScrubVideo(videoRef, scopeRef)
+  useLenisElementProgress(scopeRef, onProgress)
+
+  const active = fade > 0
+  useScrollScrubVideo(videoRef, progress, active)
+
+  if (!active) return null
 
   return (
-    <motion.div
+    <div
       className="scroll-ambient pointer-events-none fixed inset-0 z-[1] overflow-hidden"
-      style={{ opacity: fadeOpacity }}
+      style={{ opacity: fade }}
       aria-hidden
     >
       <video
         ref={videoRef}
         className="scroll-ambient-video absolute inset-0 h-full w-full object-cover"
-        src={videoSrc}
+        src={SCROLL_AMBIENT_VIDEO}
         muted
         playsInline
         preload="auto"
-        onError={() => {
-          if (videoSrc !== SCROLL_AMBIENT_VIDEO_FALLBACK) {
-            setVideoSrc(SCROLL_AMBIENT_VIDEO_FALLBACK)
-          }
-        }}
       />
 
       <div className="absolute inset-y-0 left-0 w-[min(30vw,360px)] bg-gradient-to-r from-amber-950/12 via-transparent to-transparent mix-blend-overlay" />
@@ -87,8 +77,8 @@ export function ScrollAmbient({ scopeRef }: ScrollAmbientProps) {
 
       <div className="noise-overlay absolute inset-0 opacity-[0.06] mix-blend-overlay" />
 
-      <SideDrift side="left" />
-      <SideDrift side="right" />
-    </motion.div>
+      <SideDrift side="left" progress={progress} />
+      <SideDrift side="right" progress={progress} />
+    </div>
   )
 }

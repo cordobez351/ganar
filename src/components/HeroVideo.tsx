@@ -8,22 +8,20 @@ export function HeroVideo() {
     const video = videoRef.current
     if (!video) return
 
-    const play = () => {
-      video.play().catch(() => {
-        // Autoplay blocked until gesture — retry once on first interaction
-        const onInteract = () => {
-          video.play().catch(() => {})
-          window.removeEventListener('pointerdown', onInteract)
-        }
-        window.addEventListener('pointerdown', onInteract, { once: true })
-      })
+    const resume = () => {
+      if (video.paused) video.play().catch(() => {})
     }
 
-    video.addEventListener('canplay', play)
-    if (video.readyState >= 3) play()
+    video.addEventListener('ended', resume)
+    document.addEventListener('visibilitychange', resume)
+
+    video.play().catch(() => {
+      window.addEventListener('pointerdown', resume, { once: true })
+    })
 
     return () => {
-      video.removeEventListener('canplay', play)
+      video.removeEventListener('ended', resume)
+      document.removeEventListener('visibilitychange', resume)
     }
   }, [])
 

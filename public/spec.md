@@ -61,7 +61,7 @@ Constantes: `src/constants/media.ts`
 ## Comportamiento
 
 - **Hero**: video local en loop, flush arriba, rounded solo abajo.
-- **Scroll ambient**: video scrubbed via Lenis scroll (post-hero). Ambient mounts only after hero scroll to avoid pausing hero loop.
+- **Scroll ambient**: video local en loop, fijo detras del contenido; aparece al salir del hero. Sin scroll-scrub ni seek por scroll.
 
 ## Convenciones de copy
 

@@ -248,6 +248,56 @@ function IntroReference({ intro }: { intro: LenguaIntro }) {
   )
 }
 
+function LenguaPanel({ item }: { item: LenguaEntry }) {
+  return (
+    <div className="space-y-4 border-t border-primary/10 px-5 pb-5 pt-4 sm:px-7 sm:pb-6 sm:pt-5">
+      <div>
+        <p className="font-serif text-2xl lowercase text-primary sm:text-3xl">
+          {item.intro.headword}
+        </p>
+        {item.intro.pronunciation && (
+          <p className="mt-1 font-serif text-sm italic text-primary/60 sm:text-base">
+            {item.intro.pronunciation}
+          </p>
+        )}
+        <p className="mt-2 text-sm leading-relaxed text-primary/80 sm:text-base">
+          {item.intro.headwordLine}
+        </p>
+      </div>
+
+      <div className="space-y-3 text-sm leading-relaxed text-primary/80 sm:text-base">
+        <p>{item.intro.description}</p>
+        <p className="text-xs lowercase text-primary/70 sm:text-sm">{item.intro.tagline}</p>
+        <p>{item.intro.states}</p>
+      </div>
+
+      <IntroReference intro={item.intro} />
+
+      <div className="manuscript-rule" />
+
+      <div>
+        <p className="font-serif text-base italic lowercase text-primary sm:text-lg">
+          {item.forma} {item.clase}
+        </p>
+
+        {item.etimologia && (
+          <p className="mt-2 text-xs leading-relaxed text-gray-500 sm:text-sm">
+            {item.etimologia}
+          </p>
+        )}
+
+        <p className="mt-3 text-sm leading-relaxed text-primary/90 sm:text-base">
+          {item.sentidos.join(' · ')}
+        </p>
+
+        {item.nota && (
+          <p className="mt-2 text-xs text-gray-500 sm:text-sm">{item.nota}</p>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export function Lenguas() {
   return (
     <section id="lenguas" className="scroll-mt-8 px-4 py-20 sm:px-6 md:py-28">
@@ -255,55 +305,26 @@ export function Lenguas() {
         <SectionLabel folio="f. 03" label="En otras lenguas" />
         <div className="manuscript-rule mb-10" />
 
-        <ul className="space-y-6">
+        <ul className="space-y-2">
           {LENGUAJES.map((item) => (
-            <li key={item.lang} className="codex-card px-5 py-5 sm:px-7 sm:py-6">
-              <div className="mb-4">
-                <p className="manuscript-label mb-1">{item.lang}</p>
-                <p className="font-serif text-2xl lowercase text-primary sm:text-3xl">
-                  {item.intro.headword}
-                </p>
-                {item.intro.pronunciation && (
-                  <p className="mt-1 font-serif text-sm italic text-primary/60 sm:text-base">
-                    {item.intro.pronunciation}
-                  </p>
-                )}
-                <p className="mt-2 text-sm leading-relaxed text-primary/80 sm:text-base">
-                  {item.intro.headwordLine}
-                </p>
-              </div>
-
-              <div className="space-y-3 text-sm leading-relaxed text-primary/80 sm:text-base">
-                <p>{item.intro.description}</p>
-                <p className="text-xs lowercase text-primary/70 sm:text-sm">
-                  {item.intro.tagline}
-                </p>
-                <p>{item.intro.states}</p>
-              </div>
-
-              <IntroReference intro={item.intro} />
-
-              <div className="manuscript-rule my-5" />
-
-              <div>
-                <p className="font-serif text-base italic lowercase text-primary sm:text-lg">
-                  {item.forma} {item.clase}
-                </p>
-
-                {item.etimologia && (
-                  <p className="mt-2 text-xs leading-relaxed text-gray-500 sm:text-sm">
-                    {item.etimologia}
-                  </p>
-                )}
-
-                <p className="mt-3 text-sm leading-relaxed text-primary/90 sm:text-base">
-                  {item.sentidos.join(' · ')}
-                </p>
-
-                {item.nota && (
-                  <p className="mt-2 text-xs text-gray-500 sm:text-sm">{item.nota}</p>
-                )}
-              </div>
+            <li key={item.lang} className="codex-card overflow-hidden">
+              <details className="group">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 sm:px-7 sm:py-5 [&::-webkit-details-marker]:hidden">
+                  <div className="min-w-0">
+                    <p className="manuscript-label">{item.lang}</p>
+                    <p className="mt-1 font-serif text-base italic lowercase text-primary/80 sm:text-lg">
+                      {item.forma} {item.clase}
+                    </p>
+                  </div>
+                  <span
+                    className="shrink-0 text-sm text-primary/40 transition-transform duration-200 group-open:rotate-45"
+                    aria-hidden
+                  >
+                    +
+                  </span>
+                </summary>
+                <LenguaPanel item={item} />
+              </details>
             </li>
           ))}
         </ul>

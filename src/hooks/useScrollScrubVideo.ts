@@ -1,4 +1,4 @@
-import { useLenis } from 'lenis/react'
+import { useMotionValueEvent, useScroll } from 'framer-motion'
 import { useEffect, useRef, type RefObject } from 'react'
 
 function seekVideo(video: HTMLVideoElement, time: number) {
@@ -18,14 +18,6 @@ function seekVideo(video: HTMLVideoElement, time: number) {
   }
 }
 
-function scopeProgress(scope: HTMLElement, scroll: number) {
-  const start = scope.offsetTop
-  const end = scope.offsetTop + scope.offsetHeight - window.innerHeight
-  const range = end - start
-  if (range <= 0) return 0
-  return Math.min(1, Math.max(0, (scroll - start) / range))
-}
-
 export function useScrollScrubVideo(
   videoRef: RefObject<HTMLVideoElement | null>,
   scopeRef: RefObject<HTMLElement | null>,
@@ -35,11 +27,14 @@ export function useScrollScrubVideo(
   const progressRef = useRef(0)
   const readyRef = useRef(false)
 
-  useLenis((lenis) => {
-    const scope = scopeRef.current
-    if (!enabled || !scope) return
-    progressRef.current = scopeProgress(scope, lenis.scroll)
-  }, [enabled, scopeRef])
+  const { scrollYProgress } = useScroll({
+    target: scopeRef,
+    offset: ['start start', 'end end'],
+  })
+
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (enabled) progressRef.current = latest
+  })
 
   useEffect(() => {
     if (!enabled) return

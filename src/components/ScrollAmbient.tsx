@@ -1,6 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useRef, useState, type RefObject } from 'react'
-import { SCROLL_AMBIENT_VIDEO } from '../constants/media'
+import {
+  SCROLL_AMBIENT_VIDEO,
+  SCROLL_AMBIENT_VIDEO_FALLBACK,
+} from '../constants/media'
 import { useScrollScrubVideo } from '../hooks/useScrollScrubVideo'
 
 type ScrollAmbientProps = {
@@ -46,6 +49,7 @@ function SideDrift({ side }: { side: 'left' | 'right' }) {
 export function ScrollAmbient({ scopeRef }: ScrollAmbientProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [enabled, setEnabled] = useState(false)
+  const [videoSrc, setVideoSrc] = useState(SCROLL_AMBIENT_VIDEO)
 
   const { scrollY } = useScroll()
   const fadeOpacity = useTransform(scrollY, (y) => {
@@ -83,10 +87,15 @@ export function ScrollAmbient({ scopeRef }: ScrollAmbientProps) {
       <video
         ref={videoRef}
         className="scroll-ambient-video absolute inset-0 h-full w-full object-cover"
-        src={SCROLL_AMBIENT_VIDEO}
+        src={videoSrc}
         muted
         playsInline
         preload="auto"
+        onError={() => {
+          if (videoSrc !== SCROLL_AMBIENT_VIDEO_FALLBACK) {
+            setVideoSrc(SCROLL_AMBIENT_VIDEO_FALLBACK)
+          }
+        }}
       />
 
       <div className="absolute inset-y-0 left-0 w-[min(30vw,360px)] bg-gradient-to-r from-amber-950/12 via-transparent to-transparent mix-blend-overlay" />

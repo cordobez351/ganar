@@ -6,10 +6,11 @@ function clamp(n: number, min: number, max: number) {
   return Math.min(max, Math.max(min, n))
 }
 
-function scopeProgress(scope: HTMLElement, scroll: number) {
-  const range = scope.offsetHeight - window.innerHeight
+function scopeProgress(scope: HTMLElement) {
+  const rect = scope.getBoundingClientRect()
+  const range = rect.height - window.innerHeight
   if (range <= 0) return 1
-  return clamp((scroll - scope.offsetTop) / range, 0, 1)
+  return clamp(-rect.top / range, 0, 1)
 }
 
 function heroFade(scroll: number) {
@@ -22,7 +23,7 @@ function heroFade(scroll: number) {
 function seekVideo(video: HTMLVideoElement, time: number) {
   if (video.readyState < 2 || !Number.isFinite(video.duration)) return
   const t = clamp(time, 0, Math.max(0, video.duration - 0.04))
-  if (Math.abs(video.currentTime - t) < 0.04) return
+  if (Math.abs(video.currentTime - t) < 0.08) return
   try {
     video.currentTime = t
   } catch {
@@ -33,41 +34,44 @@ function seekVideo(video: HTMLVideoElement, time: number) {
 export function useScrollAmbient(
   scopeRef: RefObject<HTMLElement | null>,
   videoRef: RefObject<HTMLVideoElement | null>,
+  containerRef: RefObject<HTMLDivElement | null>,
 ) {
   const readyRef = useRef(false)
-  const opacityRef = useRef(0)
-  const activeRef = useRef(false)
-  const [active, setActive] = useState(false)
-  const [opacity, setOpacity] = useState(0)
+  const mountedRef = useRef(false)
+  const pendingProgressRef = useRef(0)
+  const rafRef = useRef(0)
+  const [mounted, setMounted] = useState(false)
 
   useLenis((lenis: Lenis) => {
     const scope = scopeRef.current
-    if (!scope) return
+    const container = containerRef.current
+    if (!scope || !container) return
 
     const fade = heroFade(lenis.scroll)
-    const progress = scopeProgress(scope, lenis.scroll)
+    const progress = scopeProgress(scope)
 
-    if ((fade > 0) !== activeRef.current) {
-      activeRef.current = fade > 0
-      setActive(fade > 0)
+    pendingProgressRef.current = progress
+    container.style.opacity = String(fade)
+    container.style.visibility = fade > 0 ? 'visible' : 'hidden'
+
+    if (fade > 0 && !mountedRef.current) {
+      mountedRef.current = true
+      setMounted(true)
     }
 
-    if (Math.abs(fade - opacityRef.current) > 0.01) {
-      opacityRef.current = fade
-      setOpacity(fade)
-    }
+    if (!readyRef.current || fade <= 0) return
 
-    const video = videoRef.current
-    if (video && readyRef.current && fade > 0) {
-      seekVideo(video, progress * video.duration)
-    }
-  }, [scopeRef, videoRef])
+    cancelAnimationFrame(rafRef.current)
+    rafRef.current = requestAnimationFrame(() => {
+      const video = videoRef.current
+      if (video && readyRef.current) {
+        seekVideo(video, pendingProgressRef.current * video.duration)
+      }
+    })
+  }, [scopeRef, videoRef, containerRef])
 
   useEffect(() => {
-    if (!active) {
-      readyRef.current = false
-      return
-    }
+    if (!mounted) return
 
     const video = videoRef.current
     if (!video) return
@@ -76,6 +80,7 @@ export function useScrollAmbient(
       if (!Number.isFinite(video.duration) || video.duration <= 0) return
       video.pause()
       readyRef.current = true
+      seekVideo(video, pendingProgressRef.current * video.duration)
     }
 
     video.addEventListener('loadedmetadata', prime)
@@ -85,7 +90,7 @@ export function useScrollAmbient(
       readyRef.current = false
       video.removeEventListener('loadedmetadata', prime)
     }
-  }, [active, videoRef])
+  }, [mounted, videoRef])
 
-  return { opacity, active }
+  return { mounted }
 }

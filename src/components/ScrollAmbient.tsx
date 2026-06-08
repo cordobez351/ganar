@@ -7,25 +7,27 @@ type ScrollAmbientProps = {
 }
 
 export function ScrollAmbient({ scopeRef }: ScrollAmbientProps) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
-  const { opacity, active } = useScrollAmbient(scopeRef, videoRef)
-
-  if (!active) return null
+  const { mounted } = useScrollAmbient(scopeRef, videoRef, containerRef)
 
   return (
     <div
+      ref={containerRef}
       className="pointer-events-none fixed inset-0 z-[1] overflow-hidden"
-      style={{ opacity }}
+      style={{ opacity: 0, visibility: 'hidden' }}
       aria-hidden
     >
-      <video
-        ref={videoRef}
-        className="scroll-ambient-video absolute inset-0 h-full w-full object-cover"
-        src={SCROLL_AMBIENT_VIDEO}
-        muted
-        playsInline
-        preload="auto"
-      />
+      {mounted && (
+        <video
+          ref={videoRef}
+          className="scroll-ambient-video absolute inset-0 h-full w-full object-cover"
+          src={SCROLL_AMBIENT_VIDEO}
+          muted
+          playsInline
+          preload="auto"
+        />
+      )}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_42%_65%_at_50%_50%,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.28)_55%,transparent_82%)]" />
     </div>
   )

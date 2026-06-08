@@ -21,7 +21,6 @@ function seekVideo(video: HTMLVideoElement, time: number) {
 export function useScrollScrubVideo(
   videoRef: RefObject<HTMLVideoElement | null>,
   scopeRef: RefObject<HTMLElement | null>,
-  enabled: boolean,
 ) {
   const durationRef = useRef(0)
   const progressRef = useRef(0)
@@ -33,12 +32,10 @@ export function useScrollScrubVideo(
   })
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    if (enabled) progressRef.current = latest
+    progressRef.current = latest
   })
 
   useEffect(() => {
-    if (!enabled) return
-
     const video = videoRef.current
     if (!video) return
 
@@ -77,5 +74,5 @@ export function useScrollScrubVideo(
       video.removeEventListener('loadedmetadata', prime)
       video.removeEventListener('canplay', onCanPlay)
     }
-  }, [videoRef, enabled])
+  }, [videoRef])
 }

@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useEffect, useRef, useState, type RefObject } from 'react'
+import { useRef, useState, type RefObject } from 'react'
 import {
   SCROLL_AMBIENT_VIDEO,
   SCROLL_AMBIENT_VIDEO_FALLBACK,
@@ -23,7 +23,7 @@ function SideDrift({ side }: { side: 'left' | 'right' }) {
 
   return (
     <motion.div
-      className={`pointer-events-none absolute top-0 ${x} hidden h-full w-8 md:block lg:w-12`}
+      className={`pointer-events-none absolute top-0 ${x} h-full w-6 sm:w-8 lg:w-12`}
       style={{ y, opacity }}
       aria-hidden
     >
@@ -48,35 +48,17 @@ function SideDrift({ side }: { side: 'left' | 'right' }) {
 
 export function ScrollAmbient({ scopeRef }: ScrollAmbientProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const [enabled, setEnabled] = useState(false)
   const [videoSrc, setVideoSrc] = useState(SCROLL_AMBIENT_VIDEO)
 
   const { scrollY } = useScroll()
   const fadeOpacity = useTransform(scrollY, (y) => {
     const hero = window.innerHeight
-    if (y < hero * 0.55) return 0
-    if (y < hero * 0.95) return (y - hero * 0.55) / (hero * 0.4)
+    if (y < hero * 0.25) return 0
+    if (y < hero * 0.7) return (y - hero * 0.25) / (hero * 0.45)
     return 1
   })
 
-  useEffect(() => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const narrow = window.matchMedia('(max-width: 767px)').matches
-    setEnabled(!reduced && !narrow)
-
-    const mq = window.matchMedia('(max-width: 767px)')
-    const onChange = () => {
-      setEnabled(
-        !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !mq.matches,
-      )
-    }
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
-  }, [])
-
-  useScrollScrubVideo(videoRef, scopeRef, enabled)
-
-  if (!enabled) return null
+  useScrollScrubVideo(videoRef, scopeRef)
 
   return (
     <motion.div
@@ -101,7 +83,7 @@ export function ScrollAmbient({ scopeRef }: ScrollAmbientProps) {
       <div className="absolute inset-y-0 left-0 w-[min(30vw,360px)] bg-gradient-to-r from-amber-950/12 via-transparent to-transparent mix-blend-overlay" />
       <div className="absolute inset-y-0 right-0 w-[min(30vw,360px)] bg-gradient-to-l from-slate-900/15 via-transparent to-transparent mix-blend-overlay" />
 
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_48%_70%_at_50%_50%,rgba(0,0,0,0.88)_0%,rgba(0,0,0,0.45)_50%,transparent_78%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_42%_65%_at_50%_50%,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.28)_55%,transparent_82%)]" />
 
       <div className="noise-overlay absolute inset-0 opacity-[0.06] mix-blend-overlay" />
 

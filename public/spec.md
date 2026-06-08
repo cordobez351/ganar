@@ -62,9 +62,7 @@ Constantes: `src/constants/media.ts`
 ## Comportamiento
 
 - **Hero**: video local en loop, flush arriba, rounded solo abajo.
-- **Scroll ambient**: video scrubbed a posicion de scroll (desktop, post-hero). Lenis + rAF.
-- **Mobile**: sin scroll ambient (<768px).
-- **prefers-reduced-motion**: sin Lenis smooth, sin scroll ambient.
+- **Scroll ambient**: video scrubbed a posicion de scroll (todos los viewports, post-hero). Lenis + rAF.
 
 ## Convenciones de copy
 

@@ -69,30 +69,48 @@ body {
   }
 
   .scroll-ambient-video {
-    opacity: 0.44;
+    opacity: 0.58;
     -webkit-mask-image: linear-gradient(
       90deg,
       #fff 0%,
-      #fff 14%,
-      transparent 22%,
-      transparent 78%,
-      #fff 86%,
+      #fff 8%,
+      transparent 18%,
+      transparent 82%,
+      #fff 92%,
       #fff 100%
     );
     mask-image: linear-gradient(
       90deg,
       #fff 0%,
-      #fff 14%,
-      transparent 22%,
-      transparent 78%,
-      #fff 86%,
+      #fff 8%,
+      transparent 18%,
+      transparent 82%,
+      #fff 92%,
       #fff 100%
     );
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-ambient {
-      display: none;
+  @media (max-width: 639px) {
+    .scroll-ambient-video {
+      opacity: 0.52;
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        #fff 0%,
+        #fff 4%,
+        transparent 12%,
+        transparent 88%,
+        #fff 96%,
+        #fff 100%
+      );
+      mask-image: linear-gradient(
+        90deg,
+        #fff 0%,
+        #fff 4%,
+        transparent 12%,
+        transparent 88%,
+        #fff 96%,
+        #fff 100%
+      );
     }
   }
 }

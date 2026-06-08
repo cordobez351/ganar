@@ -18,7 +18,6 @@ Audiencias: humanos (pagina) y agentes (archivos markdown/texto).
 | Build | Vite 8 |
 | UI | React 18, TypeScript |
 | Estilos | Tailwind CSS 3 |
-| Motion | Framer Motion |
 | Scroll | Lenis |
 | Fuentes | @fontsource/almarai, @fontsource/instrument-serif |
 

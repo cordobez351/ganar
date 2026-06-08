@@ -1,6 +1,4 @@
-import { motion } from 'framer-motion'
 import { HeroVideo } from './HeroVideo'
-import { WordsPullUp } from './animations/WordsPullUp'
 import { Logo } from './Logo'
 
 const NAV_ITEMS = [
@@ -36,14 +34,7 @@ export function Hero() {
                   href={item.href}
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
-                  className="whitespace-nowrap text-[9px] transition-colors sm:text-[10px] md:text-xs"
-                  style={{ color: 'rgba(225, 224, 204, 0.8)' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#E1E0CC'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'rgba(225, 224, 204, 0.8)'
-                  }}
+                  className="whitespace-nowrap text-[9px] text-primary/80 transition-colors hover:text-primary sm:text-[10px] md:text-xs"
                 >
                   {item.label}
                 </a>
@@ -55,27 +46,24 @@ export function Hero() {
         <div className="absolute inset-0 z-10 flex items-center justify-center p-5 sm:p-8 md:p-10">
           <div className="grid w-full max-w-7xl grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-6">
             <div className="text-center lg:col-span-7 lg:text-left">
-              <WordsPullUp
-                text="ganar"
-                showAsterisk
-                className="text-[22vw] font-medium lowercase leading-[1] tracking-[-0.07em] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] xl:text-[14vw]"
-                style={{ color: '#E1E0CC' }}
-              />
+              <h1 className="relative inline-block text-[22vw] font-medium lowercase leading-none tracking-[-0.07em] text-[#E1E0CC] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] xl:text-[14vw]">
+                ganar
+                <span className="absolute text-[0.31em]" style={{ top: '0.65em', right: '-0.3em' }}>
+                  *
+                </span>
+              </h1>
               <p className="mt-3 font-serif text-lg italic text-primary/60 sm:text-xl">
                 /ɡaˈnaɾ/
               </p>
             </div>
 
             <div className="flex flex-col items-center gap-5 text-center lg:col-span-5 lg:items-start lg:text-left">
-              <motion.p
+              <p
                 className="text-xs lowercase text-primary/70 sm:text-sm md:text-base"
                 style={{ lineHeight: 1.65 }}
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               >
                 posibilidades. eleccion.
-              </motion.p>
+              </p>
             </div>
           </div>
         </div>

@@ -13,10 +13,11 @@ export function ScrollAmbient() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  if (!visible) return null
+
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-[1] overflow-hidden transition-opacity duration-700"
-      style={{ opacity: visible ? 1 : 0 }}
+      className="pointer-events-none fixed inset-0 z-[1] overflow-hidden"
       aria-hidden
     >
       <video
@@ -26,7 +27,7 @@ export function ScrollAmbient() {
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
       />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_42%_65%_at_50%_50%,rgba(0,0,0,0.72)_0%,rgba(0,0,0,0.28)_55%,transparent_82%)]" />
     </div>

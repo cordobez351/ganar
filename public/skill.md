@@ -31,6 +31,8 @@ La eleccion traza un camino y colapsa el resto en ese uso.
 2. Obtener lo disputado en juego, batalla u oposicion.
 3. Conquistar o recuperar lo propio.
 4. Adelantar o aventajar.
+5. Llegar adonde se pretende.
+6. Captar la voluntad de alguien.
 
 ## Cuando aplicar
 

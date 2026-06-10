@@ -21,6 +21,16 @@ const ACEPCIONES = [
     text: 'Adelantar, aventajar, exceder en algo a alguien.',
     ejemplo: 'Ganar distancia. Ganar tiempo.',
   },
+  {
+    n: '5',
+    text: 'Llegar al sitio o lugar que se pretende.',
+    ejemplo: 'Ganar la orilla. Ganar la cima.',
+  },
+  {
+    n: '6',
+    text: 'Captar la voluntad de alguien.',
+    ejemplo: 'Ganarse al público. Ganarse el favor.',
+  },
 ]
 
 const LOCUCIONES = [

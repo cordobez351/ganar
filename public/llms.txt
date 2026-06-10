@@ -17,17 +17,17 @@
 
 | Seccion | URL | Contenido |
 |---------|-----|-----------|
-| Acepciones | https://ganar.com.ar/#acepciones | 4 acepciones del verbo |
-| Historia | https://ganar.com.ar/#historia | Etimologia y origen |
+| Acepciones | https://ganar.com.ar/#acepciones | 6 acepciones del verbo |
+| Historia | https://ganar.com.ar/#historia | Etimologia por estratos: indoeuropeo a America |
 | Lenguas | https://ganar.com.ar/#lenguas | ganar en asturiano, ladino, ido, malayo, indonesio, yagara |
 | Estados | https://ganar.com.ar/#estados | 13 estados; maxima entropia hasta el uso, la eleccion colapsa el resto |
 | Puente | https://ganar.com.ar/#registro | Humanos y agentes, reglas del skill, enlaces a archivos |
 
 ## Quick reference
 
-**Acepciones:** (1) adquirir caudal con trabajo, (2) obtener lo disputado, (3) conquistar, (4) adelantar.
+**Acepciones:** (1) adquirir caudal con trabajo, (2) obtener lo disputado, (3) conquistar, (4) adelantar, (5) llegar adonde se pretende, (6) captar la voluntad.
 
-**Etimologia:** got. *ganan, germ. *waidanjan, lat. ganāre.
+**Etimologia:** origen incierto; prob. got. *ganan "codiciar" cruzado con germ. *waidanjan "cosechar"; lat. medieval ganāre. Raiz profunda ie. *ǵʰeh₂- "estar abierto" (familia de chaos y yawn).
 
 **Locuciones:** ganar vida, ganar terreno, ganar honra.
 

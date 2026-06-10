@@ -20,6 +20,10 @@ Verbo transitivo del espanol. Estados posibles. Eleccion propia.
    - Ejemplo: Ganar terreno. Ganar la calle.
 4. Adelantar, aventajar, exceder en algo a alguien.
    - Ejemplo: Ganar distancia. Ganar tiempo.
+5. Llegar al sitio o lugar que se pretende.
+   - Ejemplo: Ganar la orilla. Ganar la cima.
+6. Captar la voluntad de alguien (usado mas como pronominal).
+   - Ejemplo: Ganarse al publico. Ganarse el favor.
 
 ## Locuciones
 
@@ -31,12 +35,23 @@ Verbo transitivo del espanol. Estados posibles. Eleccion propia.
 
 ## Etimologia
 
-- Gotico **\*ganan** "codiciar"
-- Germanico **\*waidanjan** "cosechar", "ganar"
-- Latin medieval **ganāre** (linea romance: leones antiguo)
-- Escandinavo antiguo **gana** "desear con avidez"
+Origen incierto. Hipotesis mas aceptada (cf. Corominas, DCECH): gotico **\*ganan** "codiciar", cruzado en Iberia con el germanico occidental **\*waidanjan** "cosechar".
+
+Estratos (de lo profundo a lo reciente):
+
+| Capa | Forma | Sentido |
+|------|-------|---------|
+| Indoeuropeo | \*ǵʰeh₂- | "estar abierto", "bostezar"; misma familia que gr. *chaos* "abertura primordial" y en. *yawn* |
+| Protogermanico | \*ganōną | "abrir la boca", "mirar con avidez" |
+| Nordico antiguo | gana | "abrir la boca", "desear con avidez"; noruego *gana* "mirar con ansia" |
+| Gotico | \*ganan | "codiciar" (forma reconstruida, no atestiguada) |
+| Germanico occidental | \*waidanjan | "cosechar", "obtener alimento" (cf. aleman *Weide* "pasto"); cruce iberico; de esta linea: *guadana* y los romances |
+| Latin medieval | ganāre | documentos del reino de Leon; el asturiano conserva la forma |
+| Espanol medieval | ganar | "obtener", "vencer"; ya en el Cantar de mio Cid |
+
 - Sustantivo relacionado: **gana** (deseo, avidez)
-- Cognados: *guadagnare*, *gagner*, *gazanhar*, *guanyar*, *ganhar*
+- Derivados: **ganancia**; **ganado** — "lo ganado": la riqueza era el rebano
+- Cognados romances (linea \*waidanjan): *guadagnare*, *gagner*, *gazanhar*, *guanyar*, *ganhar*
 
 En el espanol medieval: obtener y vencer. En America: ganar vida, ganar terreno, ganar respeto.
 
@@ -86,10 +101,10 @@ El mundo lo lee; cada lectura percibe distinto.
 ## Preguntas frecuentes
 
 **Que significa ganar?**
-Verbo transitivo del espanol. Adquirir con trabajo, obtener lo disputado, conquistar o adelantar. El sentido depende del uso.
+Verbo transitivo del espanol. Adquirir con trabajo, obtener lo disputado, conquistar, adelantar, llegar adonde se pretende o captar la voluntad de alguien. El sentido depende del uso.
 
 **Cual es la etimologia de ganar?**
-Gotico *ganan, germanico *waidanjan, latin medieval ganāre.
+Origen incierto; probablemente del gotico *ganan "codiciar", cruzado en Iberia con el germanico *waidanjan "cosechar". Latin medieval ganāre. Raiz profunda indoeuropea *ǵʰeh₂- "estar abierto" — la misma familia antigua que chaos y yawn.
 
 **Sinonimos de ganar?**
 lograr, merecer, conseguir, triunfar, vencer, cobrar, conquistar.

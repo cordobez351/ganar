@@ -26,8 +26,8 @@ Audiencias: humanos (pagina) y agentes (archivos markdown/texto).
 | Seccion | id | folio | Contenido |
 |---------|-----|-------|-----------|
 | Hero | — | — | ganar*, /ɡaˈnaɾ/, posibilidades. eleccion. |
-| Acepciones | acepciones | f. 01 | 4 acepciones, locuciones |
-| Historia | historia | f. 02 | Etimologia |
+| Acepciones | acepciones | f. 01 | 6 acepciones, locuciones |
+| Historia | historia | f. 02 | Etimologia por estratos (indoeuropeo a America) |
 | Lenguas | lenguas | f. 03 | Asturiano, espanol, ladino, ido, malayo, indonesio, yagara |
 | Estados | estados | f. 04 | 13 estados interactivos; elegir uno colapsa el resto |
 | Puente | registro | f. 05 | Humanos y agentes, reglas del skill, enlaces |

@@ -20,8 +20,8 @@
 | Acepciones | https://ganar.com.ar/#acepciones | 4 acepciones del verbo |
 | Historia | https://ganar.com.ar/#historia | Etimologia y origen |
 | Lenguas | https://ganar.com.ar/#lenguas | ganar en asturiano, ladino, ido, malayo, indonesio, yagara |
-| Estados | https://ganar.com.ar/#estados | lograr, merecer, conseguir, triunfar, vencer, cobrar, conquistar, ceder, capitular, renunciar, fracasar, sucumbir, perder |
-| Registro | https://ganar.com.ar/#registro | Enlaces a archivos |
+| Estados | https://ganar.com.ar/#estados | 13 estados; maxima entropia hasta el uso, la eleccion colapsa el resto |
+| Puente | https://ganar.com.ar/#registro | Humanos y agentes, reglas del skill, enlaces a archivos |
 
 ## Quick reference
 
@@ -32,6 +32,8 @@
 **Locuciones:** ganar vida, ganar terreno, ganar honra.
 
 **Estados:** lograr, merecer, conseguir, triunfar, vencer, cobrar, conquistar, ceder, capitular, renunciar, fracasar, sucumbir, perder.
+
+**Entropia:** maxima antes del uso; cada eleccion traza un camino y colapsa el resto.
 
 ## Additional files
 

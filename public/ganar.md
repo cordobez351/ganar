@@ -74,6 +74,15 @@ lograr · merecer · conseguir · triunfar · vencer · cobrar · conquistar · 
 | sucumbir | Caer ante fuerza mayor |
 | perder | Dejar de tener lo disputado |
 
+## Entropia
+
+Antes del uso, maxima entropia: trece estados equiprobables.
+El uso elige; la eleccion traza un camino y colapsa el resto.
+Volver a leer restituye la entropia: todos los estados posibles otra vez.
+
+Humanos, agentes y modelos leen el mismo canon publicado en la red.
+El mundo lo lee; cada lectura percibe distinto.
+
 ## Preguntas frecuentes
 
 **Que significa ganar?**

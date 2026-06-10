@@ -32,7 +32,7 @@ const LOCUCIONES = [
 export function Acepciones() {
   return (
     <section id="acepciones" className="scroll-mt-8 px-4 py-20 sm:px-6 md:py-28">
-      <div className="mx-auto max-w-3xl">
+      <div className="reveal mx-auto max-w-3xl">
         <SectionLabel folio="f. 01" label="Acepciones" />
         <div className="manuscript-rule mb-10" />
 

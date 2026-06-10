@@ -3,7 +3,7 @@ import { SectionLabel } from './SectionLabel'
 export function About() {
   return (
     <section id="historia" className="scroll-mt-8 px-4 py-20 sm:px-6 md:py-28">
-      <div className="mx-auto max-w-3xl">
+      <div className="reveal mx-auto max-w-3xl">
         <SectionLabel folio="f. 02" label="Historia y etimología" />
         <div className="manuscript-rule mb-10" />
 

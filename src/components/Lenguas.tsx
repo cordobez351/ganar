@@ -301,7 +301,7 @@ function LenguaPanel({ item }: { item: LenguaEntry }) {
 export function Lenguas() {
   return (
     <section id="lenguas" className="scroll-mt-8 px-4 py-20 sm:px-6 md:py-28">
-      <div className="mx-auto max-w-3xl">
+      <div className="reveal mx-auto max-w-3xl">
         <SectionLabel folio="f. 03" label="En otras lenguas" />
         <div className="manuscript-rule mb-10" />
 

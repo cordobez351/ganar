@@ -16,7 +16,7 @@ Audiencias: humanos (pagina) y agentes (archivos markdown/texto).
 | Capa | Tecnologia |
 |------|------------|
 | Build | Vite 8 |
-| UI | React 18, TypeScript |
+| UI | React 19, TypeScript |
 | Estilos | Tailwind CSS 3 |
 | Scroll | Lenis |
 | Fuentes | @fontsource/almarai, @fontsource/instrument-serif |
@@ -29,8 +29,8 @@ Audiencias: humanos (pagina) y agentes (archivos markdown/texto).
 | Acepciones | acepciones | f. 01 | 4 acepciones, locuciones |
 | Historia | historia | f. 02 | Etimologia |
 | Lenguas | lenguas | f. 03 | Asturiano, espanol, ladino, ido, malayo, indonesio, yagara |
-| Estados | estados | f. 04 | 13 estados |
-| Registro | registro | f. 05 | Enlaces a archivos |
+| Estados | estados | f. 04 | 13 estados interactivos; elegir uno colapsa el resto |
+| Puente | registro | f. 05 | Humanos y agentes, reglas del skill, enlaces |
 | Footer | — | — | Navegacion archivos |
 
 ## Archivos publicos
@@ -60,8 +60,12 @@ Constantes: `src/constants/media.ts`
 
 ## Comportamiento
 
-- **Hero**: video local en loop, flush arriba, rounded solo abajo.
-- **Scroll ambient**: video local en loop, fijo detras del contenido; aparece al salir del hero. Sin scroll-scrub ni seek por scroll.
+- **Hero**: video local en loop, flush arriba, rounded solo abajo. Poster estatico; respeta prefers-reduced-motion.
+- **Scroll ambient**: video local en loop, fijo detras del contenido; aparece al salir del hero. Sin scroll-scrub ni seek por scroll. No se monta con prefers-reduced-motion.
+- **Estados**: interactivo. Elegir un estado muestra su nota y atenua el resto; volver a tocarlo restituye la entropia.
+- **Canon**: boton en la nav abre overlay con /ganar.md crudo (la vista del agente).
+- **Folio rail**: navegacion fija lateral con scrollspy, solo desktop, visible al salir del hero.
+- **Reveal**: secciones aparecen con animation-timeline: view() si el navegador lo soporta; sin JS.
 
 ## Convenciones de copy
 

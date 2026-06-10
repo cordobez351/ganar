@@ -7,6 +7,7 @@ export function ScrollAmbient() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const onScroll = () => setVisible(window.scrollY > REVEAL_AFTER_PX)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })

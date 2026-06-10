@@ -22,7 +22,8 @@ Estados posibles. Eleccion propia.
 
 lograr · merecer · conseguir · triunfar · vencer · cobrar · conquistar · ceder · capitular · renunciar · fracasar · sucumbir · perder
 
-Cada estado es posible. La eleccion colapsa el resto en ese uso.
+Cada estado es posible. Maxima entropia hasta el uso.
+La eleccion traza un camino y colapsa el resto en ese uso.
 
 ## Acepciones (resumen)
 

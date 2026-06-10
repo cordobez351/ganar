@@ -1,12 +1,16 @@
+import { useState } from 'react'
+import { CanonView } from './CanonView'
 import { HeroVideo } from './HeroVideo'
 import { Logo } from './Logo'
 
 const NAV_ITEMS = [
   { label: 'Humanos', href: '/humans.txt', external: true },
-  { label: 'Agentes', href: '/ganar.md', external: true },
+  { label: 'Agentes', href: '/skill.md', external: true },
 ]
 
 export function Hero() {
+  const [canonOpen, setCanonOpen] = useState(false)
+
   return (
     <section className="relative z-20 h-screen pb-4 md:pb-6">
       <div className="relative h-full overflow-hidden rounded-b-2xl md:rounded-b-[2rem]">
@@ -39,6 +43,13 @@ export function Hero() {
                   {item.label}
                 </a>
               ))}
+              <button
+                type="button"
+                onClick={() => setCanonOpen(true)}
+                className="whitespace-nowrap text-[9px] text-primary/80 transition-colors hover:text-primary sm:text-[10px] md:text-xs"
+              >
+                Canon
+              </button>
             </div>
           </div>
         </nav>
@@ -68,6 +79,8 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      <CanonView open={canonOpen} onClose={() => setCanonOpen(false)} />
     </section>
   )
 }

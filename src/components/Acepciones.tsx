@@ -4,7 +4,7 @@ const ACEPCIONES = [
   {
     n: '1',
     text: 'Adquirir caudal o aumentarlo con cualquier género de comercio, industria o trabajo.',
-    ejemplo: 'Ganarse la vida. Ganar el sustento.',
+    ejemplo: 'Ganar el sustento. Ganar un sueldo.',
   },
   {
     n: '2',
@@ -14,7 +14,7 @@ const ACEPCIONES = [
   {
     n: '3',
     text: 'Conquistar, tomar posesión de algo ajeno o recuperar lo propio.',
-    ejemplo: 'Ganar terreno. Ganar la calle.',
+    ejemplo: 'Ganar la plaza. Ganar la ciudad.',
   },
   {
     n: '4',
@@ -34,9 +34,9 @@ const ACEPCIONES = [
 ]
 
 const LOCUCIONES = [
-  { frase: 'ganar vida', nota: 'Sustentarse con el producto del trabajo.' },
-  { frase: 'ganar terreno', nota: 'Avanzar, hacerse con espacio o influencia.' },
-  { frase: 'ganar honra', nota: 'Recuperar o conquistar el respeto ajeno.' },
+  { frase: 'ganarse la vida', nota: 'Sustentarse con el producto del trabajo.' },
+  { frase: 'ganar terreno', nota: 'Adelantar, progresar; irse extendiendo.' },
+  { frase: 'ganar tiempo', nota: 'Obtener un tiempo del que no se disponía; hacer que la demora juegue a favor.' },
 ]
 
 export function Acepciones() {

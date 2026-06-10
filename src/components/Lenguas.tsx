@@ -50,7 +50,7 @@ const LENGUAJES: LenguaEntry[] = [
     clase: 'verbu',
     etimologia:
       'Del vieyu leonés ganar; llatín medieval ganāre. Pariente del castellán ganar.',
-    sentidos: ['vencer', 'ganar', 'obtener', 'recibir', 'galiar'],
+    sentidos: ['ganar', 'vencer', 'obtener'],
     nota: 'Indicativu presente 1.ª pers. gano; participiu ganáu.',
   },
   {
@@ -93,7 +93,7 @@ const LENGUAJES: LenguaEntry[] = [
         'ganar.com.ar es un registro filosofiko i manuskrito sovra el vervo ganar: asepsiones, etimolojia, espressiones, otras linguas i estados posibles. No es un produkto ni un servisio; es una referensia canonical publicada en la red.',
       tagline: 'posibilidades. eleksion.',
       states:
-        'Kada uzo del vervo eskoje un estado entre munchos — lograr, mereser, konsiguir, triunfar, venser, kobrar, konquistar, seder, kapituular, renunsyar, frakasar, sukumbir, perder — sin jeararkia impuesta.',
+        'Kada uzo del vervo eskoje un estado entre munchos — lograr, mereser, konsiguir, triunfar, venser, kobrar, konquistar, seder, kapitular, renunsyar, frakasar, sukumbir, perder — sin jerarkia impuesta.',
       reference: {
         label: 'Referensia',
         site: 'Sitio',
@@ -126,8 +126,8 @@ const LENGUAJES: LenguaEntry[] = [
     },
     forma: 'ganar',
     clase: 'verbo',
-    sentidos: ['vinkar', 'meritagar'],
-    nota: 'Antonomo: perdar.',
+    sentidos: ['ganar, obtener', 'vencer'],
+    nota: 'Presente ganas, pasado ganis, futuro ganos. Antónimo: perdar.',
   },
   {
     lang: 'Malayo',
@@ -149,9 +149,7 @@ const LENGUAJES: LenguaEntry[] = [
     },
     forma: 'ganar',
     clase: 'kata adjektif',
-    etimologia: 'Kemungkinan pinjaman daripada Minangkabau.',
     sentidos: ['pening', 'pening kepala', 'keliru'],
-    nota: 'Sebagai kata nama, dalam garis lain: artileri, kanunir.',
   },
   {
     lang: 'Indonesio',
@@ -175,30 +173,29 @@ const LENGUAJES: LenguaEntry[] = [
     clase: 'kata sifat',
     etimologia: 'Diwarisi dari bahasa Melayu ganar.',
     sentidos: ['pusing', 'pening', 'bingung'],
-    nota: 'Varian tidak baku: gana.',
   },
   {
     lang: 'Yagara',
     intro: {
       headword: 'ganar',
-      headwordLine: 'ganar — yagaradul numeral dhawun.',
+      headwordLine: 'ganar — numeral de la lengua yagara (Yuggera), región de Brisbane, Australia.',
       description:
-        'ganar.com.ar — yagaradul ganar verbo kuypa wanggarrang filosofikal manuscrito. Acepciones, etimologia, locuciones, barranggulli dhawun, garrigarrang states. Product nil, service nil; canonical reference web-la published.',
-      tagline: 'garrigarrang. choice.',
+        'En yagara, ganar significa «uno»: forma alternativa de kunnar, registrada en listas de palabras coloniales conservadas por la State Library of Queensland. Esta entrada se escribe en español: no hay corpus suficiente para redactarla en yagara.',
+      tagline: 'uno.',
       states:
-        'Verb use — state chosen from many — lograr, merecer, conseguir, triunfar, vencer, cobrar, conquistar, ceder, capitular, renunciar, fracasar, sucumbir, perder — hierarchy nil imposed.',
+        'Un homógrafo, no un cognado: la misma forma escrita, otro mundo. En español, ganar elige un estado entre trece; en yagara, ganar nombra el uno.',
       reference: {
-        label: 'Reference',
-        site: 'Site',
+        label: 'Referencia',
+        site: 'Sitio',
         canon: 'Canon',
-        humans: 'Humans',
-        agents: 'Agents',
+        humans: 'Humanos',
+        agents: 'Agentes',
       },
     },
     forma: 'ganar',
     clase: 'numeral',
-    sentidos: ['kunnar-garrigarrang alternate form'],
-    nota: 'Attested variant; Yuggera resources limited.',
+    sentidos: ['uno — forma alternativa de kunnar'],
+    nota: 'Documentación limitada; fuente: listas de palabras indígenas, State Library of Queensland.',
   },
 ]
 

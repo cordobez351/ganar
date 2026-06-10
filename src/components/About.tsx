@@ -29,7 +29,7 @@ const ESTRATOS = [
     era: 'Latín medieval',
     forma: 'ganāre',
     sentido: '«ganar»',
-    nota: 'Atestiguado en documentos del reino de León. El asturiano conserva la misma forma.',
+    nota: 'Latín medieval de Hispania, en la línea leonesa. El asturiano conserva la misma forma.',
   },
   {
     era: 'Español medieval',
@@ -39,9 +39,9 @@ const ESTRATOS = [
   },
   {
     era: 'América',
-    forma: 'ganar',
-    sentido: '«ganar vida», «ganar terreno», «ganar respeto»',
-    nota: 'El verbo sigue abierto. Cada uso elige.',
+    forma: 'ganarse',
+    sentido: '«situarse», «ponerse en un lugar»',
+    nota: 'Chilenismo recogido por el Diccionario de la lengua española. El verbo sigue abierto; cada uso elige.',
   },
 ]
 

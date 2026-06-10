@@ -29,9 +29,9 @@ Verbo transitivo del espanol. Estados posibles. Eleccion propia.
 
 | Locucion | Significado |
 |----------|-------------|
-| ganar vida | Sustentarse con el producto del trabajo |
-| ganar terreno | Avanzar, hacerse con espacio o influencia |
-| ganar honra | Recuperar o conquistar el respeto ajeno |
+| ganarse la vida | Sustentarse con el producto del trabajo |
+| ganar terreno | Adelantar, progresar; irse extendiendo |
+| ganar tiempo | Obtener un tiempo del que no se disponia; hacer que la demora juegue a favor |
 
 ## Etimologia
 
@@ -46,26 +46,26 @@ Estratos (de lo profundo a lo reciente):
 | Nordico antiguo | gana | "abrir la boca", "desear con avidez"; noruego *gana* "mirar con ansia" |
 | Gotico | \*ganan | "codiciar" (forma reconstruida, no atestiguada) |
 | Germanico occidental | \*waidanjan | "cosechar", "obtener alimento" (cf. aleman *Weide* "pasto"); cruce iberico; de esta linea: *guadana* y los romances |
-| Latin medieval | ganāre | documentos del reino de Leon; el asturiano conserva la forma |
+| Latin medieval | ganāre | latin medieval hispano, linea leonesa; el asturiano conserva la forma |
 | Espanol medieval | ganar | "obtener", "vencer"; ya en el Cantar de mio Cid |
 
 - Sustantivo relacionado: **gana** (deseo, avidez)
 - Derivados: **ganancia**; **ganado** — "lo ganado": la riqueza era el rebano
 - Cognados romances (linea \*waidanjan): *guadagnare*, *gagner*, *gazanhar*, *guanyar*, *ganhar*
 
-En el espanol medieval: obtener y vencer. En America: ganar vida, ganar terreno, ganar respeto.
+En el espanol medieval: obtener y vencer. En el espanol de Chile, pronominal: ganarse "situarse, ponerse en un lugar" (recogido por el DLE).
 
 ## En otras lenguas
 
 | Lengua | Clase | Sentidos |
 |--------|-------|----------|
-| Asturiano | verbo | vencer, ganar, obtener, recibir, batir |
+| Asturiano | verbo | ganar, vencer, obtener |
 | Espanol | verbo | ganar, granjear, vencer, derrotar, alcanzar |
 | Ladino | verbo | granjear, vencer |
-| Ido | verbo | vencer, granjear (antonimo: perdar) |
+| Ido | verbo | ganar, obtener, vencer (antonimo: perdar) |
 | Malayo | adjetivo | mareado, aturdido, confuso |
-| Indonesio | adjetivo | mareado, aturdido, confuso |
-| Yagara | numeral | forma alternativa de kunnar |
+| Indonesio | adjetivo | mareado, aturdido, confuso (del malayo ganar) |
+| Yagara | numeral | uno — forma alternativa de kunnar |
 
 ## Estados
 

@@ -140,3 +140,31 @@ h2 {
     }
   }
 }
+
+/* Idle RPG shell — scoped away from Almarai manuscript type */
+.juego-shell,
+.juego-shell button,
+.juego-shell input,
+.juego-shell select,
+.juego-shell textarea {
+  font-family: ui-monospace, 'IBM Plex Mono', 'SF Mono', Menlo, Consolas,
+    monospace;
+}
+
+.juego-shell .font-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.juego-canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.juego-panel {
+  color: #dedbc8;
+}
+
+.juego-tooltip {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+}
+

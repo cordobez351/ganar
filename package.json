@@ -8,7 +8,8 @@
     "og:generate": "node scripts/generate-og.mjs",
     "build": "npm run og:generate && tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sim": "node scripts/sim.mjs"
   },
   "dependencies": {
     "@fontsource/almarai": "^5.2.8",

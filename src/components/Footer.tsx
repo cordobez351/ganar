@@ -1,8 +1,17 @@
+import { navigate } from '../router'
+
 export function Footer() {
   return (
     <footer className="px-4 py-12 sm:px-6">
       <div className="mx-auto max-w-3xl text-center">
         <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs text-gray-500">
+          <button
+            type="button"
+            onClick={() => navigate('/juego')}
+            className="transition-colors hover:text-primary"
+          >
+            /juego
+          </button>
           <a href="/ganar.md" className="transition-colors hover:text-primary">
             ganar.md
           </a>

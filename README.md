@@ -14,3 +14,17 @@ Cada uso del verbo elige un estado entre muchos — lograr, merecer, conseguir, 
 - Canon: [ganar.md](https://ganar.com.ar/ganar.md)
 - Humanos: [humans.txt](https://ganar.com.ar/humans.txt)
 - Agentes: [skill.md](https://ganar.com.ar/skill.md) · [spec.md](https://ganar.com.ar/spec.md) · [llms.txt](https://ganar.com.ar/llms.txt)
+
+## /juego
+
+Idle RPG en la misma app (Vite + React). Abrí `/juego` o el enlace del pie.
+
+```bash
+npm install
+npm run dev
+# http://localhost:5173/juego
+npm run sim   # chequeo de determinismo
+npm run build
+```
+
+Partidas en `localStorage` (exportar/importar desde Ajustes). Arte en sprites pixel definidos en código; sin assets binarios del juego.

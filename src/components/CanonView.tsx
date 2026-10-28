@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { X } from '@keyline-icons/react'
+import { DiamondOrbitSmoothLoader } from './bits/DiamondOrbitSmoothLoader'
 
 interface CanonViewProps {
   open: boolean
@@ -45,14 +47,21 @@ export function CanonView({ open, onClose }: CanonViewProps) {
           <button
             type="button"
             onClick={onClose}
-            className="text-xs text-primary/60 transition-colors hover:text-primary sm:text-sm"
+            className="flex items-center gap-1.5 text-xs text-primary/60 transition-colors hover:text-primary sm:text-sm"
           >
-            cerrar ×
+            cerrar
+            <X className="size-3.5" aria-hidden />
           </button>
         </div>
         <div className="manuscript-rule mb-4" />
         <pre className="canon-pre flex-1 overflow-y-auto whitespace-pre-wrap text-xs leading-relaxed text-primary/80 sm:text-sm">
-          {error ? 'No se pudo cargar /ganar.md' : (texto ?? 'cargando…')}
+          {error ? 'No se pudo cargar /ganar.md' : texto}
+          {!error && texto === null && (
+            <span className="flex h-full flex-col items-center justify-center gap-4" role="status">
+              <DiamondOrbitSmoothLoader color="#DEDBC8" dotSize={5} gap={4} speed={1.2} bloom />
+              <span className="manuscript-label">cargando el canon…</span>
+            </span>
+          )}
         </pre>
         <div className="manuscript-rule mt-4" />
         <p className="mt-3 text-[0.6rem] text-gray-500 sm:text-xs">

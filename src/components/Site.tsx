@@ -1,7 +1,9 @@
 import { ReactLenis } from 'lenis/react'
 import { About } from './About'
+import ClickSpark from './bits/ClickSpark'
 import { Acepciones } from './Acepciones'
 import { Estados } from './Estados'
+import { EstadosLoop } from './EstadosLoop'
 import { FolioRail } from './FolioRail'
 import { Footer } from './Footer'
 import { Hero } from './Hero'
@@ -12,8 +14,18 @@ import { ScrollAmbient } from './ScrollAmbient'
 export function Site() {
   return (
     <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
-      <div className="relative bg-black">
+      <ClickSpark
+        className="bg-black"
+        sparkColor={['#DEDBC8', '#E1E0CC', '#8f8c7a']}
+        sparkSize={9}
+        sparkRadius={22}
+        sparkCount={10}
+        duration={520}
+        shape="streak"
+        glow={0.5}
+      >
         <Hero />
+        <EstadosLoop />
         <FolioRail />
         <div className="relative">
           <ScrollAmbient />
@@ -26,7 +38,7 @@ export function Site() {
             <Footer />
           </div>
         </div>
-      </div>
+      </ClickSpark>
     </ReactLenis>
   )
 }

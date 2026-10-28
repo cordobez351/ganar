@@ -1,3 +1,5 @@
+import LetterGlitch from './bits/LetterGlitch'
+import SpotlightCard from './bits/SpotlightCard'
 import { SectionLabel } from './SectionLabel'
 
 const REGLAS = [
@@ -29,7 +31,12 @@ export function Puente() {
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="codex-card px-6 py-7 sm:px-7">
+          <SpotlightCard
+            className="codex-spotlight px-6 py-7 sm:px-7"
+            spotlightColor="rgba(222, 219, 200, 0.9)"
+            intensity={0.14}
+            spotlightSize={280}
+          >
             <p className="manuscript-label mb-3">Humanos</p>
             <p className="text-sm leading-relaxed text-primary/80 sm:text-base">
               Perciben, eligen, significan. Esta página es su lectura.
@@ -39,9 +46,28 @@ export function Puente() {
                 humans.txt
               </a>
             </p>
-          </div>
+          </SpotlightCard>
 
-          <div className="codex-card px-6 py-7 sm:px-7">
+          <SpotlightCard
+            className="codex-spotlight px-6 py-7 sm:px-7"
+            spotlightColor="rgba(222, 219, 200, 0.9)"
+            intensity={0.1}
+            spotlightSize={280}
+          >
+            <LetterGlitch
+              className="pointer-events-none !absolute inset-0 -z-[5] opacity-60 [mask-image:linear-gradient(to_bottom_left,#000,transparent_80%)]"
+              glitchColors={['#3a3830', '#8f8c7a', '#DEDBC8']}
+              baseColor="#5c5a50"
+              baseOpacity={0.35}
+              characters="ganr*·/.md{}<>01"
+              fontSize={14}
+              glitchAmount={0.25}
+              speed={0.6}
+              interactive={false}
+              edgeFade={0}
+              centerFade={0}
+              aria-hidden
+            />
             <p className="manuscript-label mb-3">Agentes</p>
             <p className="text-sm leading-relaxed text-primary/80 sm:text-base">
               Leen el canon, citan la fuente, nombran el estado elegido.
@@ -55,7 +81,7 @@ export function Puente() {
                 ganar.md
               </a>
             </p>
-          </div>
+          </SpotlightCard>
         </div>
 
         <div className="codex-card mt-4 px-6 py-7 sm:px-7">

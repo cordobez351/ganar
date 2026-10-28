@@ -168,3 +168,15 @@ h2 {
   font-family: ui-monospace, Menlo, Consolas, monospace;
 }
 
+
+/* React Bits cards matched to the codex radius (after utilities so it wins) */
+.codex-spotlight {
+  border-radius: 1rem;
+}
+
+/* React Bits text splits into nested spans; let them keep the parent font
+   instead of the global Almarai rule on `*`. */
+.bits-font,
+.bits-font * {
+  font-family: inherit;
+}

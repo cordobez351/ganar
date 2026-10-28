@@ -1,0 +1,15 @@
+export const ESTADOS = [
+  { palabra: 'lograr', nota: 'Obtener el resultado deseado.' },
+  { palabra: 'merecer', nota: 'Obtener por mérito.' },
+  { palabra: 'conseguir', nota: 'Alcanzar lo buscado con esfuerzo.' },
+  { palabra: 'triunfar', nota: 'Llegar al éxito en lo emprendido.' },
+  { palabra: 'vencer', nota: 'Superar resistencia o adversario.' },
+  { palabra: 'cobrar', nota: 'Recibir lo que corresponde.' },
+  { palabra: 'conquistar', nota: 'Tomar con decisión.' },
+  { palabra: 'ceder', nota: 'Ceder terreno.' },
+  { palabra: 'capitular', nota: 'Rendirse formalmente.' },
+  { palabra: 'renunciar', nota: 'Abandonar antes de disputar.' },
+  { palabra: 'fracasar', nota: 'Quedar alejado del objetivo.' },
+  { palabra: 'sucumbir', nota: 'Caer ante fuerza mayor.' },
+  { palabra: 'perder', nota: 'Dejar de tener lo disputado.' },
+]

@@ -1,4 +1,14 @@
 import { useState } from 'react'
+import { Volume, VolumeOff } from '@keyline-icons/react'
+import { setSoundEnabled, useSoundEnabled } from '../sound/preference'
+import { playSound } from '../sound/sound-engine'
+import { bookCloseSound } from '../sound/sounds/book-close'
+import { bookOpenSound } from '../sound/sounds/book-open'
+import { clickSoftSound } from '../sound/sounds/click-soft'
+import { useUiSound } from '../sound/useUiSound'
+import DecryptedText from './bits/DecryptedText'
+import LightRays from './bits/LightRays'
+import Shuffle from './bits/Shuffle'
 import { CanonView } from './CanonView'
 import { HeroVideo } from './HeroVideo'
 import { Logo } from './Logo'
@@ -10,11 +20,28 @@ const NAV_ITEMS = [
 
 export function Hero() {
   const [canonOpen, setCanonOpen] = useState(false)
+  const soundEnabled = useSoundEnabled()
+  const playOpen = useUiSound(bookOpenSound)
+  const playClose = useUiSound(bookCloseSound)
 
   return (
     <section className="relative z-20 h-screen pb-4 md:pb-6">
       <div className="relative h-full overflow-hidden rounded-b-2xl md:rounded-b-[2rem]">
         <HeroVideo />
+
+        <LightRays
+          className="pointer-events-none absolute inset-0 z-[1] mix-blend-screen"
+          raysOrigin="top-center"
+          raysColor="#DEDBC8"
+          raysSpeed={0.6}
+          lightSpread={0.9}
+          rayLength={1.6}
+          followMouse
+          mouseInfluence={0.12}
+          noiseAmount={0.08}
+          distortion={0.04}
+          opacity={0.55}
+        />
 
         <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.12] mix-blend-overlay" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/45" />
@@ -45,10 +72,29 @@ export function Hero() {
               ))}
               <button
                 type="button"
-                onClick={() => setCanonOpen(true)}
+                onClick={() => {
+                  playOpen()
+                  setCanonOpen(true)
+                }}
                 className="whitespace-nowrap text-[9px] text-primary/80 transition-colors hover:text-primary sm:text-[10px] md:text-xs"
               >
                 Canon
+              </button>
+              <button
+                type="button"
+                aria-pressed={soundEnabled}
+                aria-label={soundEnabled ? 'Silenciar sonido' : 'Activar sonido'}
+                onClick={() => {
+                  if (!soundEnabled) playSound(clickSoftSound.dataUri, { volume: 0.6 })
+                  setSoundEnabled(!soundEnabled)
+                }}
+                className="text-primary/60 transition-colors hover:text-primary"
+              >
+                {soundEnabled ? (
+                  <Volume className="size-3 md:size-3.5" aria-hidden />
+                ) : (
+                  <VolumeOff className="size-3 md:size-3.5" aria-hidden />
+                )}
               </button>
             </div>
           </div>
@@ -58,7 +104,18 @@ export function Hero() {
           <div className="grid w-full max-w-7xl grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-6">
             <div className="text-center lg:col-span-7 lg:text-left">
               <h1 className="relative inline-block text-[22vw] font-medium lowercase leading-none tracking-[-0.07em] text-[#E1E0CC] sm:text-[20vw] md:text-[18vw] lg:text-[16vw] xl:text-[14vw]">
-                ganar
+                <Shuffle
+                  text="ganar"
+                  tag="span"
+                  shuffleDirection="up"
+                  duration={0.45}
+                  shuffleTimes={2}
+                  animationMode="evenodd"
+                  stagger={0.05}
+                  scrambleCharset="abcdefghijklmnñopqrstuvwxyz"
+                  triggerOnHover
+                  style={{ fontFamily: 'inherit' }}
+                />
                 <span className="absolute text-[0.31em]" style={{ top: '0.65em', right: '-0.3em' }}>
                   *
                 </span>
@@ -73,14 +130,27 @@ export function Hero() {
                 className="text-xs lowercase text-primary/70 sm:text-sm md:text-base"
                 style={{ lineHeight: 1.65 }}
               >
-                posibilidades. eleccion.
+                <DecryptedText
+                  text="posibilidades. elección."
+                  animateOn="view"
+                  sequential
+                  revealDirection="start"
+                  speed={45}
+                  characters="abcdefghijklmnñopqrstuvwxyzáéíóú·*"
+                />
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <CanonView open={canonOpen} onClose={() => setCanonOpen(false)} />
+      <CanonView
+        open={canonOpen}
+        onClose={() => {
+          playClose()
+          setCanonOpen(false)
+        }}
+      />
     </section>
   )
 }

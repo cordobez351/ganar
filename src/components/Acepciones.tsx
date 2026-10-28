@@ -1,3 +1,5 @@
+import AnimatedContent from './bits/AnimatedContent'
+import SpotlightCard from './bits/SpotlightCard'
 import { SectionLabel } from './SectionLabel'
 
 const ACEPCIONES = [
@@ -47,22 +49,31 @@ export function Acepciones() {
         <div className="manuscript-rule mb-10" />
 
         <ol className="space-y-8">
-          {ACEPCIONES.map((item) => (
-            <li key={item.n} className="flex gap-4">
-              <span
-                className="shrink-0 font-serif text-2xl italic text-primary/40 sm:text-3xl"
-                aria-hidden
+          {ACEPCIONES.map((item, i) => (
+            <li key={item.n}>
+              <AnimatedContent
+                className="flex gap-4"
+                distance={36}
+                blur={6}
+                duration={0.9}
+                delay={(i % 2) * 0.08}
+                threshold={0.15}
               >
-                {item.n}
-              </span>
-              <div>
-                <p className="text-sm leading-relaxed text-primary/90 sm:text-base">
-                  {item.text}
-                </p>
-                <p className="mt-2 font-serif text-xs italic text-gray-500 sm:text-sm">
-                  {item.ejemplo}
-                </p>
-              </div>
+                <span
+                  className="shrink-0 font-serif text-2xl italic text-primary/40 sm:text-3xl"
+                  aria-hidden
+                >
+                  {item.n}
+                </span>
+                <div>
+                  <p className="text-sm leading-relaxed text-primary/90 sm:text-base">
+                    {item.text}
+                  </p>
+                  <p className="mt-2 font-serif text-xs italic text-gray-500 sm:text-sm">
+                    {item.ejemplo}
+                  </p>
+                </div>
+              </AnimatedContent>
             </li>
           ))}
         </ol>
@@ -72,11 +83,18 @@ export function Acepciones() {
         <p className="manuscript-label mb-6">Locuciones</p>
         <ul className="space-y-4">
           {LOCUCIONES.map((loc) => (
-            <li key={loc.frase} className="codex-card px-5 py-4">
-              <p className="font-serif text-base italic text-primary sm:text-lg">
-                {loc.frase}
-              </p>
-              <p className="mt-1 text-xs text-gray-500 sm:text-sm">{loc.nota}</p>
+            <li key={loc.frase}>
+              <SpotlightCard
+                className="codex-spotlight px-5 py-4"
+                spotlightColor="rgba(222, 219, 200, 0.9)"
+                intensity={0.12}
+                spotlightSize={220}
+              >
+                <p className="font-serif text-base italic text-primary sm:text-lg">
+                  {loc.frase}
+                </p>
+                <p className="mt-1 text-xs text-gray-500 sm:text-sm">{loc.nota}</p>
+              </SpotlightCard>
             </li>
           ))}
         </ul>

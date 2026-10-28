@@ -1,25 +1,17 @@
 import { useState } from 'react'
+import { ESTADOS } from '../constants/estados'
+import { glass002Sound } from '../sound/sounds/glass-002'
+import { hoverTickSound } from '../sound/sounds/hover-tick'
+import { useUiSound } from '../sound/useUiSound'
+import DecryptedText from './bits/DecryptedText'
 import { SectionLabel } from './SectionLabel'
 
-const ESTADOS = [
-  { palabra: 'lograr', nota: 'Obtener el resultado deseado.' },
-  { palabra: 'merecer', nota: 'Obtener por mérito.' },
-  { palabra: 'conseguir', nota: 'Alcanzar lo buscado con esfuerzo.' },
-  { palabra: 'triunfar', nota: 'Llegar al éxito en lo emprendido.' },
-  { palabra: 'vencer', nota: 'Superar resistencia o adversario.' },
-  { palabra: 'cobrar', nota: 'Recibir lo que corresponde.' },
-  { palabra: 'conquistar', nota: 'Tomar con decisión.' },
-  { palabra: 'ceder', nota: 'Ceder terreno.' },
-  { palabra: 'capitular', nota: 'Rendirse formalmente.' },
-  { palabra: 'renunciar', nota: 'Abandonar antes de disputar.' },
-  { palabra: 'fracasar', nota: 'Quedar alejado del objetivo.' },
-  { palabra: 'sucumbir', nota: 'Caer ante fuerza mayor.' },
-  { palabra: 'perder', nota: 'Dejar de tener lo disputado.' },
-]
 
 export function Estados() {
   const [elegido, setElegido] = useState<string | null>(null)
   const actual = ESTADOS.find((e) => e.palabra === elegido)
+  const playCollapse = useUiSound(glass002Sound, 0.35)
+  const playRestore = useUiSound(hoverTickSound, 0.5)
 
   return (
     <section id="estados" className="scroll-mt-8 px-4 py-20 sm:px-6 md:py-28">
@@ -33,6 +25,22 @@ export function Estados() {
         </p>
 
         <div className="codex-card p-6 sm:p-8">
+          <p
+            className="mb-6 min-h-[1.2em] font-serif text-5xl italic leading-none text-primary sm:text-6xl md:text-7xl"
+            aria-hidden
+          >
+            <DecryptedText
+              key={elegido ?? 'ganar'}
+              text={elegido ?? 'ganar'}
+              animateOn="view"
+              sequential
+              revealDirection="center"
+              speed={35}
+              parentClassName="bits-font"
+              characters="abcdefghijklmnñopqrstuvwxyz"
+            />
+          </p>
+
           <ul className="flex flex-wrap gap-x-6 gap-y-3">
             {ESTADOS.map(({ palabra }) => {
               const activo = elegido === palabra
@@ -42,7 +50,11 @@ export function Estados() {
                   <button
                     type="button"
                     aria-pressed={activo}
-                    onClick={() => setElegido(activo ? null : palabra)}
+                    onClick={() => {
+                      if (activo) playRestore()
+                      else playCollapse({ playbackRate: 0.9 + Math.random() * 0.25 })
+                      setElegido(activo ? null : palabra)
+                    }}
                     className={`font-serif text-base italic transition-all duration-300 sm:text-lg ${
                       activo
                         ? 'text-primary'

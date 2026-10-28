@@ -1,3 +1,6 @@
+import { Plus } from '@keyline-icons/react'
+import { bookFlip1Sound } from '../sound/sounds/book-flip-1'
+import { useUiSound } from '../sound/useUiSound'
 import { SectionLabel } from './SectionLabel'
 
 type LenguaIntro = {
@@ -296,6 +299,8 @@ function LenguaPanel({ item }: { item: LenguaEntry }) {
 }
 
 export function Lenguas() {
+  const playFlip = useUiSound(bookFlip1Sound, 0.3)
+
   return (
     <section id="lenguas" className="scroll-mt-8 px-4 py-20 sm:px-6 md:py-28">
       <div className="reveal mx-auto max-w-3xl">
@@ -305,7 +310,12 @@ export function Lenguas() {
         <ul className="space-y-2">
           {LENGUAJES.map((item) => (
             <li key={item.lang} className="codex-card overflow-hidden">
-              <details className="group">
+              <details
+                className="group"
+                onToggle={(e) => {
+                  if (e.currentTarget.open) playFlip()
+                }}
+              >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 sm:px-7 sm:py-5 [&::-webkit-details-marker]:hidden">
                   <div className="min-w-0">
                     <p className="manuscript-label">{item.lang}</p>
@@ -313,12 +323,10 @@ export function Lenguas() {
                       {item.forma} {item.clase}
                     </p>
                   </div>
-                  <span
-                    className="shrink-0 text-sm text-primary/40 transition-transform duration-200 group-open:rotate-45"
+                  <Plus
+                    className="size-4 shrink-0 text-primary/40 transition-transform duration-300 group-open:rotate-45"
                     aria-hidden
-                  >
-                    +
-                  </span>
+                  />
                 </summary>
                 <LenguaPanel item={item} />
               </details>

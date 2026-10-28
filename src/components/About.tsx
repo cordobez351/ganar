@@ -1,3 +1,5 @@
+import DecryptedText from './bits/DecryptedText'
+import ShinyText from './bits/ShinyText'
 import { SectionLabel } from './SectionLabel'
 
 const ESTRATOS = [
@@ -75,7 +77,15 @@ export function About() {
               />
               <p className="manuscript-label">{estrato.era}</p>
               <p className="mt-1.5 font-serif text-xl italic text-primary sm:text-2xl">
-                {estrato.forma}{' '}
+                <DecryptedText
+                  text={estrato.forma}
+                  animateOn="inViewHover"
+                  sequential
+                  revealDirection="start"
+                  speed={70}
+                  parentClassName="bits-font"
+                  characters="abcdefghijklmnopqrstuvwxyzāēīōūǵʰ₂*"
+                />{' '}
                 <span className="text-base text-primary/60 sm:text-lg">
                   {estrato.sentido}
                 </span>
@@ -89,8 +99,15 @@ export function About() {
 
         <div className="manuscript-rule my-10" />
 
-        <p className="text-center font-serif text-sm italic text-primary/60 sm:text-base">
-          en el fondo de la palabra, una boca abierta ante lo posible.
+        <p className="text-center font-serif text-sm italic sm:text-base">
+          <ShinyText
+            text="en el fondo de la palabra, una boca abierta ante lo posible."
+            color="rgba(222, 219, 200, 0.6)"
+            shineColor="#ffffff"
+            speed={4}
+            delay={1.5}
+            className="bits-font"
+          />
         </p>
       </div>
     </section>

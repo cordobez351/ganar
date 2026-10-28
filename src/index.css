@@ -180,3 +180,25 @@ h2 {
 .bits-font * {
   font-family: inherit;
 }
+
+/* The hero asterisk breathes: a reconstructed form, never quite still. */
+@media (prefers-reduced-motion: no-preference) {
+  .asterisco {
+    animation: asterisco-pulso 3.6s ease-in-out infinite;
+  }
+  .asterisco:hover {
+    animation: none;
+  }
+}
+
+@keyframes asterisco-pulso {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 0 rgba(225, 224, 204, 0);
+  }
+  50% {
+    opacity: 0.55;
+    text-shadow: 0 0 18px rgba(225, 224, 204, 0.6);
+  }
+}

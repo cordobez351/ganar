@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useLenis } from 'lenis/react'
 import { Volume, VolumeOff } from '@keyline-icons/react'
 import { setSoundEnabled, useSoundEnabled } from '../sound/preference'
 import { playSound } from '../sound/sound-engine'
 import { bookCloseSound } from '../sound/sounds/book-close'
 import { bookOpenSound } from '../sound/sounds/book-open'
 import { clickSoftSound } from '../sound/sounds/click-soft'
+import { impactBellHeavy000Sound } from '../sound/sounds/impact-bell-heavy-000'
 import { useUiSound } from '../sound/useUiSound'
 import DecryptedText from './bits/DecryptedText'
 import LightRays from './bits/LightRays'
@@ -23,6 +25,8 @@ export function Hero() {
   const soundEnabled = useSoundEnabled()
   const playOpen = useUiSound(bookOpenSound)
   const playClose = useUiSound(bookCloseSound)
+  const playBell = useUiSound(impactBellHeavy000Sound, 0.3)
+  const lenis = useLenis()
 
   return (
     <section className="relative z-20 h-screen pb-4 md:pb-6">
@@ -116,9 +120,19 @@ export function Hero() {
                   triggerOnHover
                   style={{ fontFamily: 'inherit' }}
                 />
-                <span className="absolute text-[0.31em]" style={{ top: '0.65em', right: '-0.3em' }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    playBell({ playbackRate: 0.8 + Math.random() * 0.15 })
+                    lenis?.scrollTo('#historia', { duration: 2.2 })
+                  }}
+                  title="* forma reconstruida: lo que ningún texto atestigua"
+                  aria-label="Ir a la etimología. El asterisco marca una forma no atestiguada."
+                  className="asterisco absolute leading-none text-[0.31em] transition-[color,transform] duration-500 hover:rotate-90 hover:text-white"
+                  style={{ top: '0.65em', right: '-0.3em' }}
+                >
                   *
-                </span>
+                </button>
               </h1>
               <p className="mt-3 font-serif text-lg italic text-primary/60 sm:text-xl">
                 /ɡaˈnaɾ/

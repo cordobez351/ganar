@@ -1,7 +1,12 @@
+import { lazy, useState } from 'react'
 import { Plus } from '@keyline-icons/react'
 import { bookFlip1Sound } from '../sound/sounds/book-flip-1'
 import { useUiSound } from '../sound/useUiSound'
+import { Diferido } from './Diferido'
+import type { Lugar } from './LenguasGlobe'
 import { SectionLabel } from './SectionLabel'
+
+const LenguasGlobe = lazy(() => import('./LenguasGlobe').then((m) => ({ default: m.LenguasGlobe })))
 
 type LenguaIntro = {
   headword: string
@@ -27,11 +32,17 @@ type LenguaEntry = {
   etimologia?: string
   sentidos: string[]
   nota?: string
+  /** Where the language lives, for the globe. Empty means no territory. */
+  lugares: Lugar[]
+  /** Short caption under the globe when this language is open. */
+  donde: string
 }
 
 const LENGUAJES: LenguaEntry[] = [
   {
     lang: 'Asturiano',
+    lugares: [{ nombre: 'Oviedo', lat: 43.3614, lng: -5.8494 }],
+    donde: 'Asturias',
     intro: {
       headword: 'ganar',
       pronunciation: '/ɡaˈnaɾ/',
@@ -58,6 +69,14 @@ const LENGUAJES: LenguaEntry[] = [
   },
   {
     lang: 'Español',
+    lugares: [
+      { nombre: 'Madrid', lat: 40.4168, lng: -3.7038 },
+      { nombre: 'Ciudad de México', lat: 19.4326, lng: -99.1332 },
+      { nombre: 'Bogotá', lat: 4.711, lng: -74.0721 },
+      { nombre: 'Santiago', lat: -33.4489, lng: -70.6693 },
+      { nombre: 'Buenos Aires', lat: -34.6037, lng: -58.3816 },
+    ],
+    donde: 'de Madrid a Buenos Aires',
     intro: {
       headword: 'ganar',
       pronunciation: '/ɡaˈnaɾ/',
@@ -89,6 +108,12 @@ const LENGUAJES: LenguaEntry[] = [
   },
   {
     lang: 'Ladino',
+    lugares: [
+      { nombre: 'Estambul', lat: 41.0082, lng: 28.9784 },
+      { nombre: 'Tesalónica', lat: 40.6401, lng: 22.9444 },
+      { nombre: 'Jerusalén', lat: 31.7683, lng: 35.2137 },
+    ],
+    donde: 'Estambul · Tesalónica · Jerusalén',
     intro: {
       headword: 'ganar',
       headwordLine: 'ganar — vervo transitivo del ladino.',
@@ -111,6 +136,8 @@ const LENGUAJES: LenguaEntry[] = [
   },
   {
     lang: 'Ido',
+    lugares: [],
+    donde: 'lengua construida: sin territorio',
     intro: {
       headword: 'ganar',
       headwordLine: 'ganar — transitiva verbo en Ido.',
@@ -134,6 +161,8 @@ const LENGUAJES: LenguaEntry[] = [
   },
   {
     lang: 'Malayo',
+    lugares: [{ nombre: 'Kuala Lumpur', lat: 3.139, lng: 101.6869 }],
+    donde: 'Malasia',
     intro: {
       headword: 'ganar',
       headwordLine: 'ganar — kata adjektif dalam bahasa Melayu.',
@@ -156,6 +185,8 @@ const LENGUAJES: LenguaEntry[] = [
   },
   {
     lang: 'Indonesio',
+    lugares: [{ nombre: 'Yakarta', lat: -6.2088, lng: 106.8456 }],
+    donde: 'Indonesia',
     intro: {
       headword: 'ganar',
       headwordLine: 'ganar — kata sifat dalam bahasa Indonesia.',
@@ -179,6 +210,8 @@ const LENGUAJES: LenguaEntry[] = [
   },
   {
     lang: 'Yagara',
+    lugares: [{ nombre: 'Meanjin (Brisbane)', lat: -27.4698, lng: 153.0251 }],
+    donde: 'Meanjin (Brisbane), Australia',
     intro: {
       headword: 'ganar',
       headwordLine: 'ganar — numeral de la lengua yagara (Yuggera), región de Brisbane, Australia.',
@@ -300,6 +333,8 @@ function LenguaPanel({ item }: { item: LenguaEntry }) {
 
 export function Lenguas() {
   const playFlip = useUiSound(bookFlip1Sound, 0.3)
+  const [activa, setActiva] = useState<string | null>(null)
+  const actual = LENGUAJES.find((l) => l.lang === activa)
 
   return (
     <section id="lenguas" className="scroll-mt-8 px-4 py-20 sm:px-6 md:py-28">
@@ -307,13 +342,37 @@ export function Lenguas() {
         <SectionLabel folio="f. 03" label="En otras lenguas" />
         <div className="manuscript-rule mb-10" />
 
+        <div className="codex-card relative mb-4 grid items-center gap-2 overflow-hidden px-5 pt-5 sm:grid-cols-[1fr_auto] sm:gap-6 sm:px-7 sm:py-2">
+          <div className="relative z-10" aria-live="polite">
+            <p className="manuscript-label">{actual ? actual.lang : 'Mapa'}</p>
+            <p className="mt-1 font-serif text-lg italic text-primary/85 sm:text-xl">
+              {actual ? actual.donde : 'siete lenguas, una forma escrita'}
+            </p>
+            <p className="mt-2 text-[0.7rem] leading-relaxed text-gray-500 sm:text-xs">
+              {actual
+                ? actual.lugares.length > 0
+                  ? actual.lugares.map((l) => l.nombre).join(' · ')
+                  : 'sin lugar en el mapa: el globo gira libre'
+                : 'abrí una lengua y el globo gira hacia ella'}
+            </p>
+          </div>
+          <Diferido className="relative mx-auto -mb-16 aspect-square w-72 sm:mb-0 sm:w-80">
+            <LenguasGlobe lenguas={LENGUAJES} activa={activa} />
+          </Diferido>
+        </div>
+
         <ul className="space-y-2">
           {LENGUAJES.map((item) => (
             <li key={item.lang} className="codex-card overflow-hidden">
               <details
                 className="group"
                 onToggle={(e) => {
-                  if (e.currentTarget.open) playFlip()
+                  if (e.currentTarget.open) {
+                    playFlip()
+                    setActiva(item.lang)
+                  } else {
+                    setActiva((a) => (a === item.lang ? null : a))
+                  }
                 }}
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 sm:px-7 sm:py-5 [&::-webkit-details-marker]:hidden">

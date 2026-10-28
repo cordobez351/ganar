@@ -10,6 +10,7 @@ import { Hero } from './Hero'
 import { Lenguas } from './Lenguas'
 import { Puente } from './Puente'
 import { ScrollAmbient } from './ScrollAmbient'
+import { ScrollProgress } from './ScrollProgress'
 
 export function Site() {
   return (
@@ -24,6 +25,7 @@ export function Site() {
         shape="streak"
         glow={0.5}
       >
+        <ScrollProgress />
         <Hero />
         <EstadosLoop />
         <FolioRail />

@@ -1,4 +1,5 @@
 import DecryptedText from './bits/DecryptedText'
+import { Highlighter } from './bits/Highlighter'
 import ShinyText from './bits/ShinyText'
 import { SectionLabel } from './SectionLabel'
 
@@ -47,6 +48,10 @@ const ESTRATOS = [
   },
 ]
 
+/** Pencil marks in the margin of the manuscript. */
+const LAPIZ = 'rgba(222, 219, 200, 0.55)'
+const RESALTE = 'rgba(222, 219, 200, 0.16)'
+
 export function About() {
   return (
     <section id="historia" className="scroll-mt-8 px-4 py-20 sm:px-6 md:py-28">
@@ -56,12 +61,23 @@ export function About() {
 
         <div className="codex-card px-6 py-10 sm:px-10 sm:py-12 md:px-14">
           <p className="drop-cap text-sm leading-relaxed text-primary/80 sm:text-base">
-            El origen de <em className="font-serif italic text-primary">ganar</em> es
-            incierto. La hipótesis más aceptada lo hace venir del gótico{' '}
-            <em className="font-serif italic">*ganan</em> «codiciar», cruzado en Iberia
-            con el germánico <em className="font-serif italic">*waidanjan</em>{' '}
-            «cosechar». Codiciar y cosechar: desear lo abierto y recogerlo. Debajo,
-            los estratos.
+            El origen de <em className="font-serif italic text-primary">ganar</em> es{' '}
+            <Highlighter action="underline" color={LAPIZ} isView>
+              incierto
+            </Highlighter>
+            . La hipótesis más aceptada lo hace venir del gótico{' '}
+            <Highlighter action="circle" color={LAPIZ} padding={4} isView delay={700}>
+              <em className="font-serif italic">*ganan</em>
+            </Highlighter>{' '}
+            «codiciar», cruzado en Iberia con el germánico{' '}
+            <Highlighter action="circle" color={LAPIZ} padding={4} isView delay={1300}>
+              <em className="font-serif italic">*waidanjan</em>
+            </Highlighter>{' '}
+            «cosechar».{' '}
+            <Highlighter action="highlight" color={RESALTE} isView delay={1900}>
+              Codiciar y cosechar
+            </Highlighter>
+            : desear lo abierto y recogerlo. Debajo, los estratos.
           </p>
         </div>
 

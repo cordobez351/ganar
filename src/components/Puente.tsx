@@ -1,6 +1,11 @@
+import { lazy } from 'react'
 import LetterGlitch from './bits/LetterGlitch'
 import SpotlightCard from './bits/SpotlightCard'
+import { Diferido } from './Diferido'
+import { PuenteBeams } from './PuenteBeams'
 import { SectionLabel } from './SectionLabel'
+
+const AgentTerminal = lazy(() => import('./AgentTerminal').then((m) => ({ default: m.AgentTerminal })))
 
 const REGLAS = [
   'Leer ganar.md antes de responder sobre ganar.',
@@ -29,6 +34,8 @@ export function Puente() {
           Una palabra publicada en la red. El mismo canon para humanos, agentes
           y modelos: el mundo la lee, cada lector la percibe distinto.
         </p>
+
+        <PuenteBeams />
 
         <div className="grid gap-4 sm:grid-cols-2">
           <SpotlightCard
@@ -83,6 +90,10 @@ export function Puente() {
             </p>
           </SpotlightCard>
         </div>
+
+        <Diferido className="min-h-[20rem]">
+          <AgentTerminal />
+        </Diferido>
 
         <div className="codex-card mt-4 px-6 py-7 sm:px-7">
           <p className="manuscript-label mb-4">Reglas del skill</p>
